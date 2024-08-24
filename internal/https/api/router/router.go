@@ -5,6 +5,8 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func Router() {
@@ -17,6 +19,8 @@ func Router() {
 	r.GET("/items", handler.GetAllItems)
 	r.PUT("/items/:id", handler.UpdateItems)
 	r.DELETE("/items/:id", handler.DeleteItems)
+
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	err := r.RunTLS(":9000", "./internal/tls/items.pem", "./internal/tls/items-key.pem")
 	if err != nil {
