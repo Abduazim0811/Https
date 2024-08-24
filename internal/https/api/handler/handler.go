@@ -4,6 +4,7 @@ import (
 	"Items/internal/entity/items"
 	"Items/internal/service"
 	"net/http"
+	_ "Items/docs"
 
 	"github.com/gin-gonic/gin"
 )
@@ -134,4 +135,8 @@ func (i *ItemsHandler) DeleteItems(c *gin.Context){
 	}
 
 	c.JSON(http.StatusOK, gin.H{"Message": "Items deleted"})
+}
+
+func (i *ItemsHandler) Greet(c *gin.Context){
+	c.JSON(http.StatusOK, gin.H{"message":"doston tvar"})
 }

@@ -19,6 +19,7 @@ func Router() {
 	r.GET("/items", handler.GetAllItems)
 	r.PUT("/items/:id", handler.UpdateItems)
 	r.DELETE("/items/:id", handler.DeleteItems)
+	r.GET("/ping", handler.Greet)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
